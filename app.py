@@ -38,7 +38,7 @@ def submit():
 
     print(f"Inserted data: activity1={activity1}, activity2={activity2}")
 
-    cursor.execute("SELECT * FROM servers")
+    cursor.execute("SELECT * FROM user_data")
     r = cursor.fetchall()
 
     for i in r:
