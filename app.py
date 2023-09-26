@@ -32,7 +32,7 @@ def submit():
     # Insert Data into database 
     cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (?,?)',(activity1, activity2))
 
-    cursor.execute("SELECT * FROM servers")
+    cursor.execute("SELECT * FROM user_data")
     r = cursor.fetchall()
     sqlConnection.commit()
 
