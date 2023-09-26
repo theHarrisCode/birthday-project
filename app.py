@@ -38,6 +38,12 @@ def submit():
 
     print(f"Inserted data: activity1={activity1}, activity2={activity2}")
 
+    cursor.execute("SELECT * FROM servers")
+    r = cursor.fetchall()
+
+    for i in r:
+        print(r)
+
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
