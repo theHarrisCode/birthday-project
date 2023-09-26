@@ -29,21 +29,19 @@ def submit():
                    )
                    ''')
 
-    # Insert Data into database 
-    cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (?,?)',(activity1, activity2))
+    try:
+        # Insert Data into database 
+        cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (?,?)',(activity1, activity2))
+        sqlConnection.commit()
+    except Exception as e:
+        sqlConnection.rollback()  # Rollback changes if an exception occurs
+        print(f"Error: {str(e)}")
+    finally:
+        sqlConnection.close()
 
-    cursor.execute("SELECT * FROM user_data")
-    r = cursor.fetchall()
-    sqlConnection.commit()
-
-    # Close the database connection
-    sqlConnection.close()
 
     print(f"Inserted data: activity1={activity1}, activity2={activity2}")
-
-    for i in r:
-        print(r)
-
+    
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
