@@ -31,15 +31,15 @@ def submit():
 
     # Insert Data into database 
     cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (?,?)',(activity1, activity2))
+
+    cursor.execute("SELECT * FROM servers")
+    r = cursor.fetchall()
     sqlConnection.commit()
 
     # Close the database connection
     sqlConnection.close()
 
     print(f"Inserted data: activity1={activity1}, activity2={activity2}")
-
-    cursor.execute("SELECT * FROM user_data")
-    r = cursor.fetchall()
 
     for i in r:
         print(r)
