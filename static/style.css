@@ -1,0 +1,140 @@
+h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p, li, label, a {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bodyClass{
+    /* animation-name: colorChange; */
+    background-color: white;
+    margin: 0;
+    /* padding: 20px; */
+}
+
+@keyframes colorChange {
+    0% {
+        background-color: aqua;
+    }
+    20% {
+        background-color: blueviolet;
+    }
+    40% {
+        background-color: fuchsia;
+    }
+    60% {
+        background-color: goldenrod;
+    }
+    80% {
+        background-color: palegreen;
+    }
+    100% {
+        background-color: orangered;
+    }
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.title-color-section {
+    background-color: #FFBB5C;
+    padding: 20px;
+    margin: 0;
+}
+
+.thursday-color-container {
+    background-color: #FF9B50;
+    padding: 20px;
+}
+
+.friday-color-container {
+    background-color: #E25E3E;
+    padding: 20px;
+}
+
+.saturday-color-container {
+    background-color: #C63D2F;
+    padding: 20px;
+}
+
+.day-container, title {
+    background-color: white;
+    padding: 20px ;
+    border-radius: 30px;
+    border-style: none;
+    margin: 15px;
+}
+
+.info-pic-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pic-icon {
+    width: 30vw;
+}
+
+.section-title {
+    color: white;
+    font-size: 28px;
+    font-family: 'East Sea Dokdo', cursive;
+}
+
+.title, .date-title {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 20px 20px;
+}
+
+.menu-title {
+    font-size: 12px;
+}
+
+.textbox {
+    height: 80px;
+    width: 30vw;
+}
+
+.car1 {
+    display: flex;
+    width: fit-content;
+}
+
+.car2 {
+    display: flex;
+    width: fit-content;
+}
+
+.web-icon {
+    height: 20vh;
+}
+
+.left-car-container {
+    width: fit-content;
+}
+
+.right-car-container {
+    width: fit-content;
+}
+
+.submit-btn {
+    border-style: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    background-color: #C63D2F;
+    color: white;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
