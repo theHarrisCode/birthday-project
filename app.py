@@ -48,7 +48,7 @@ def submit():
 
         postgresConn.commit()
     except Exception as e:
-        postgresConn.rollback()  # Rollback changes if an exception occurs
+        postgresConn.rollback() # Rollback changes if an exception occurs
         print(f"Error: {str(e)}")
     finally:
         cursor.close()
