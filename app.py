@@ -16,9 +16,16 @@ def submit():
         activity1 = request.form['activity1']
         activity2 = request.form['activity2']
 
+
+    # Heroku Postgres Databse URl
+    DATABASE_URL = os.environ['postgres://tsewkdrsbcncfq:1c249454ea38e84cf244dafdf56e4c71aa679833d5fd8f89cdea16d0c5ba2f09@ec2-34-236-103-63.compute-1.amazonaws.com:5432/dfhs6b5k74uufv']
+
+    #Connecting to Heroku Postgres
+    postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
     # Connecting to SQLite Server
     sqlConnection = sqlite3.connect('activityList.db')
-    cursor = sqlConnection.cursor()
+
+    cursor = postgresConn.cursor()
 
     # Create a table if one does not exist
     cursor.execute('''
@@ -32,12 +39,13 @@ def submit():
     try:
         # Insert Data into database 
         cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (?,?)',(activity1, activity2))
-        sqlConnection.commit()
+        postgresConn.commit()
     except Exception as e:
-        sqlConnection.rollback()  # Rollback changes if an exception occurs
+        postgresConn.rollback()  # Rollback changes if an exception occurs
         print(f"Error: {str(e)}")
     finally:
-        sqlConnection.close()
+        cursor.close()
+        postgresConn.close()
 
 
     print(f"Inserted data: activity1={activity1}, activity2={activity2}")
