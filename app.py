@@ -18,7 +18,7 @@ def submit():
 
 
     # Heroku Postgres Databse URl
-    DATABASE_URL = os.environ.get("postgres://tsewkdrsbcncfq:1c249454ea38e84cf244dafdf56e4c71aa679833d5fd8f89cdea16d0c5ba2f09@ec2-34-236-103-63.compute-1.amazonaws.com:5432/dfhs6b5k74uufv")
+    DATABASE_URL = os.environ.get('DATABASE_URL')
 
     #Connecting to Heroku Postgres
     postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
