@@ -160,27 +160,36 @@
                 </div>
             </form>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $( ".bodyClass" ).on
+            // $( ".bodyClass" ).on
 
-            // Get all date containers
-            const dateContainers = document.querySelectorAll('.day-container');
+            // // Get all date containers
+            // const dateContainers = document.querySelectorAll('.day-container');
 
-            // Add click event listeners to each date container
-            dateContainers.forEach(container => {
-                const dateTitle = container.querySelector('.date-title');
-                const detailsContainer = container.querySelector('.body-container');
+            // // Add click event listeners to each date container
+            // dateContainers.forEach(container => {
+            //     const dateTitle = container.querySelector('.date-title');
+            //     const detailsContainer = container.querySelector('.body-container');
 
-                // Add click event listener to the date title
-                dateTitle.addEventListener('click', () => {
-                    // Toggle the visibility of the details container
-                    if (detailsContainer.style.display === 'none' || detailsContainer.style.display === '') {
-                        detailsContainer.style.display = 'flex';
-                    } else {
-                        detailsContainer.style.display = 'none';
-                    }
+            //     // Add click event listener to the date title
+            //     dateTitle.addEventListener('click', () => {
+            //         // Toggle the visibility of the details container
+            //         if (detailsContainer.style.display === 'none' || detailsContainer.style.display === '') {
+            //             detailsContainer.style.display = 'flex';
+            //         } else {
+            //             detailsContainer.style.display = 'none';
+            //         }
+            //     });
+            // });
+            $(document).ready(function () {
+                // Attach click event to elements with the class "date-title"
+                $('.date-title').on('click', function () {
+                    // Toggle the visibility of the associated "body-container"
+                    const detailsContainer = $(this).siblings('.body-container');
+                    detailsContainer.toggle();
                 });
             });
-            </script>
+        </script>
     </body>
 </html>
