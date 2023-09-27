@@ -23,7 +23,7 @@ def submit():
     #Connecting to Heroku Postgres
     postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
     # Connecting to SQLite Server
-    sqlConnection = sqlite3.connect('activityList.db')
+    # sqlConnection = sqlite3.connect('activityList.db')
 
     cursor = postgresConn.cursor()
 
