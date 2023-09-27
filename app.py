@@ -13,8 +13,8 @@ def submit():
 
     if request.method == 'POST':
         # Retrieve form data
-        activity1 = request.form['activity1']
-        activity2 = request.form['activity2']
+        activity1 = request.form.get('activity1')
+        activity2 = request.form.get('activity2')
 
 
     # Heroku Postgres Databse URl
