@@ -18,12 +18,23 @@ def submit():
 
 
     # Heroku Postgres Databse URl
-    DATABASE_URL = os.environ.get('DATABASE_URL')
+    # DATABASE_URL = os.environ.get('DATABASE_URL')
 
-    #Connecting to Heroku Postgres
-    postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    # #Connecting to Heroku Postgres
+    # postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
     # Connecting to SQLite Server
     # sqlConnection = sqlite3.connect('activityList.db')
+
+    # Heroku Postgres Database URL
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+
+    # Construct the dsn (data source name) in the expected format
+    dsn = f"dbname={DATABASE_URL.path[1:]} user={DATABASE_URL.username} " \
+          f"password={DATABASE_URL.password} host={DATABASE_URL.hostname} " \
+          f"port={DATABASE_URL.port} sslmode=require"
+
+    # Create the database connection
+    postgresConn = psycopg2.connect(dsn)
 
     cursor = postgresConn.cursor()
 
