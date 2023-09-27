@@ -1,7 +1,6 @@
 # App Entry Point
 from flask import Flask, render_template, request, redirect, url_for
 import psycopg2, os
-from urllib.parse import urlparse
 
 app = Flask(__name__)
 
@@ -19,28 +18,12 @@ def submit():
 
 
     # Heroku Postgres Databse URl
-    # DATABASE_URL = os.environ.get('DATABASE_URL')
-
-    # #Connecting to Heroku Postgres
-    # postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
-    # Connecting to SQLite Server
-    # sqlConnection = sqlite3.connect('activityList.db')
-
     DATABASE_URL = os.environ.get('DATABASE_URL')
 
-    # Parse the DATABASE_URL to extract components
-    url = urlparse(DATABASE_URL)
-    dbname = url.path[1:]
-    user = url.username
-    password = url.password
-    host = url.hostname
-    port = url.port
-
-    # Construct the dsn (data source name) in the expected format
-    dsn = f"dbname={dbname} user={user} password={password} host={host} port={port} sslmode=require"
-
-    # Create the database connection
-    postgresConn = psycopg2.connect(dsn)
+    #Connecting to Heroku Postgres
+    postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    # Connecting to SQLite Server
+    # sqlConnection = sqlite3.connect('activityList.db')
 
     cursor = postgresConn.cursor()
 
@@ -65,7 +48,7 @@ def submit():
 
         postgresConn.commit()
     except Exception as e:
-        postgresConn.rollback() # Rollback changes if an exception occurs
+        postgresConn.rollback()  # Rollback changes if an exception occurs
         print(f"Error: {str(e)}")
     finally:
         cursor.close()
