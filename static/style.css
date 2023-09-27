@@ -63,7 +63,7 @@ p, li, label, a {
 
 .day-container, title {
     background-color: white;
-    padding: 20px ;
+    padding: 25px;
     border-radius: 30px;
     border-style: none;
     margin: 15px;
@@ -87,6 +87,10 @@ p, li, label, a {
 .title, .date-title {
     text-align: center;
     padding-bottom: 10px;
+}
+
+.date-title {
+    cursor: pointer;
 }
 
 .body-container {
