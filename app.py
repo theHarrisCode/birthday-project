@@ -1,6 +1,7 @@
 # App Entry Point
 from flask import Flask, render_template, request, redirect, url_for
 import psycopg2, os
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 
@@ -25,13 +26,18 @@ def submit():
     # Connecting to SQLite Server
     # sqlConnection = sqlite3.connect('activityList.db')
 
-    # Heroku Postgres Database URL
     DATABASE_URL = os.environ.get('DATABASE_URL')
 
+    # Parse the DATABASE_URL to extract components
+    url = urlparse(DATABASE_URL)
+    dbname = url.path[1:]
+    user = url.username
+    password = url.password
+    host = url.hostname
+    port = url.port
+
     # Construct the dsn (data source name) in the expected format
-    dsn = f"dbname={DATABASE_URL.path[1:]} user={DATABASE_URL.username} " \
-          f"password={DATABASE_URL.password} host={DATABASE_URL.hostname} " \
-          f"port={DATABASE_URL.port} sslmode=require"
+    dsn = f"dbname={dbname} user={user} password={password} host={host} port={port} sslmode=require"
 
     # Create the database connection
     postgresConn = psycopg2.connect(dsn)
