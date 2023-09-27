@@ -7,7 +7,7 @@ const dateContainers = document.querySelectorAll('.day-container');
 // Add click event listeners to each date container
 dateContainers.forEach(container => {
     const dateTitle = container.querySelector('.date-title');
-    const detailsContainer = container.querySelector('.details-container');
+    const detailsContainer = container.querySelector('.body-container');
 
     // Add click event listener to the date title
     dateTitle.addEventListener('click', () => {
