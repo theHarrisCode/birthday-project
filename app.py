@@ -21,14 +21,7 @@ def submit():
     DATABASE_URL = os.environ.get('DATABASE_URL')
 
     #Connecting to Heroku Postgres
-    postgresConn = psycopg2.connect(
-    database=DATABASE_URL.path[1:],
-    user=DATABASE_URL.username,
-    password=DATABASE_URL.password,
-    host=DATABASE_URL.hostname,
-    port=5432,  # Replace with the port you configured in postgresql.conf
-    sslmode='require'
-    )
+    postgresConn = psycopg2.connect(DATABASE_URL, sslmode='require')
     # Connecting to SQLite Server
     # sqlConnection = sqlite3.connect('activityList.db')
 
