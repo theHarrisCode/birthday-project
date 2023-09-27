@@ -30,7 +30,6 @@ def submit():
     # Create a table if one does not exist
     cursor.execute('''
                    CREATE TABLE IF NOT EXISTS user_data (
-                   id INTEGER PRIMARY KEY,
                    activity1 TEXT,
                    activity2 TEXT
                    )
@@ -46,7 +45,7 @@ def submit():
         for i in rows:
             print(i)
 
-            
+
         postgresConn.commit()
     except Exception as e:
         postgresConn.rollback()  # Rollback changes if an exception occurs
