@@ -39,6 +39,14 @@ def submit():
     try:
         # Insert Data into database 
         cursor.execute('INSERT INTO user_data (activity1, activity2) VALUES (%s,%s)',(activity1, activity2))
+
+        cursor.execute('SELECT * FROM user_data')
+        rows = cursor.fetchall()
+
+        for i in rows:
+            print(i)
+
+            
         postgresConn.commit()
     except Exception as e:
         postgresConn.rollback()  # Rollback changes if an exception occurs
